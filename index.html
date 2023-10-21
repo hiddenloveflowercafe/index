@@ -37,7 +37,7 @@
 	<script src="js/fadeViewpoint.js"></script> -->
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
-			// Load existing reviews from local storage
+			// Load existing reviews from the server
 			loadReviews();
 
 			// Listen for the "Submit Review" button click
@@ -54,56 +54,49 @@
 				return;
 			}
 
-			const review = {
+			const reviewData = {
 				nickname: nickname,
 				text: reviewText,
-				date: new Date().toISOString(),
 			};
 
-			// Get existing reviews from local storage
-			const existingReviews = JSON.parse(localStorage.getItem("reviews")) || [];
-
-			// Add the new review
-			existingReviews.push(review);
-
-			// Store the updated reviews in local storage
-			localStorage.setItem("reviews", JSON.stringify(existingReviews));
-
-			// Clear the nickname and review input fields
-			document.getElementById("nickname").value = "";
-			document.getElementById("reviewText").value = "";
-
-			// Refresh the reviews on the page
-			loadReviews();
+			// Send a POST request to the server to add the review
+			fetch("/api/add-review", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(reviewData),
+			})
+			.then(response => response.json())
+			.then(() => {
+				// Clear the nickname and review input fields
+				document.getElementById("nickname").value = "";
+				document.getElementById("reviewText").value = "";
+				// Refresh the reviews on the page
+				loadReviews();
+			});
 		}
 
 		function loadReviews() {
-			// Get existing reviews from local storage
-			const existingReviews = JSON.parse(localStorage.getItem("reviews")) || [];
+			// Send a GET request to the server to retrieve reviews
+			fetch("/api/reviews")
+			.then(response => response.json())
+			.then(reviews => {
+				// Display the reviews on the page
+				const reviewsContainer = document.getElementById("reviews");
+				reviewsContainer.innerHTML = "";
 
-			// Remove reviews older than 2 years
-			const twoYearsAgo = new Date();
-			twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
-			const filteredReviews = existingReviews.filter(function (review) {
-				return new Date(review.date) > twoYearsAgo;
+				if (reviews.length === 0) {
+					reviewsContainer.innerHTML = "No reviews yet.";
+				} else {
+					reviews.forEach(function (review) {
+						const reviewElement = document.createElement("div");
+						reviewElement.innerHTML = `<p><strong>Nickname:</strong> ${review.nickname}</p><p>${review.text}</p>`;
+						reviewsContainer.appendChild(reviewElement);
+					});
+				}
 			});
-
-			// Store the filtered reviews back in local storage
-			localStorage.setItem("reviews", JSON.stringify(filteredReviews));
-
-			// Display the reviews on the page
-			const reviewsContainer = document.getElementById("reviews");
-			reviewsContainer.innerHTML = "";
-
-			if (filteredReviews.length === 0) {
-				reviewsContainer.innerHTML = "No reviews yet.";
-			} else {
-				filteredReviews.forEach(function (review) {
-					const reviewElement = document.createElement("div");
-					reviewElement.innerHTML = `<p><strong>Nickname:</strong> ${review.nickname}</p><p><strong>Review Date:</strong> ${review.date}</p><p>${review.text}</p>`;
-					reviewsContainer.appendChild(reviewElement);
-				});
-			}
 		}
+
 	</script>
 </html>
