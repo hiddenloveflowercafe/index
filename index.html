@@ -12,6 +12,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Princess+Sofia&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/general.css">
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"> -->
@@ -19,84 +20,16 @@
 	<script src="https://smtpjs.com/v3/smtp.js"></script> -->
 	<title>Hidden Love Flowers & Crafts + Cafe</title>
 	<body>
-		<h1>Product Reviews</h1>
-		<div id="reviews"></div>
-	
-		<h2>Add a Review</h2>
-		<input type="text" id="nickname" placeholder="Your Nickname">
-		<br>
-		<textarea id="reviewText" rows="4" cols="50" placeholder="Write your review here"></textarea>
-		<br>
-		<button id="submitReview">Submit Review</button>
-
+		<main>
+			<nav>
+				<div class="top-nav">We can customize your order to fit your needs & preference</div>
+			</nav>
+		</main>
 	</body>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 	<script src="js/navigation.js"></script>
 	<script src="js/slider.js"></script>
 	<script src="js/fadeViewpoint.js"></script> -->
-	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			// Load existing reviews from the server
-			loadReviews();
-
-			// Listen for the "Submit Review" button click
-			document.getElementById("submitReview").addEventListener("click", function () {
-				addReview();
-			});
-		});
-
-		function addReview() {
-			const nickname = document.getElementById("nickname").value;
-			const reviewText = document.getElementById("reviewText").value;
-			if (nickname.trim() === "" || reviewText.trim() === "") {
-				alert("Please enter both a nickname and a review.");
-				return;
-			}
-
-			const reviewData = {
-				nickname: nickname,
-				text: reviewText,
-			};
-
-			// Send a POST request to the server to add the review
-			fetch("/api/add-review", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(reviewData),
-			})
-			.then(response => response.json())
-			.then(() => {
-				// Clear the nickname and review input fields
-				document.getElementById("nickname").value = "";
-				document.getElementById("reviewText").value = "";
-				// Refresh the reviews on the page
-				loadReviews();
-			});
-		}
-
-		function loadReviews() {
-			// Send a GET request to the server to retrieve reviews
-			fetch("/api/reviews")
-			.then(response => response.json())
-			.then(reviews => {
-				// Display the reviews on the page
-				const reviewsContainer = document.getElementById("reviews");
-				reviewsContainer.innerHTML = "";
-
-				if (reviews.length === 0) {
-					reviewsContainer.innerHTML = "No reviews yet.";
-				} else {
-					reviews.forEach(function (review) {
-						const reviewElement = document.createElement("div");
-						reviewElement.innerHTML = `<p><strong>Nickname:</strong> ${review.nickname}</p><p>${review.text}</p>`;
-						reviewsContainer.appendChild(reviewElement);
-					});
-				}
-			});
-		}
-
-	</script>
 </html>
