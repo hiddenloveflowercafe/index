@@ -28,7 +28,7 @@ main {
 	overflow: hidden;
 }
 
-nav .top-nav {
+nav.desktop-nav .top-nav {
     background-color: #B6C69E;
     color: #ffffff;
     padding: 0.5rem;
@@ -36,23 +36,23 @@ nav .top-nav {
     text-align: center;
 }
 
-nav img.nav-logo {
+nav.desktop-nav img.nav-logo {
     height: 100px;
     object-fit: contain;
 }
 
-nav .main-nav {
+nav.desktop-nav .main-nav {
     padding: 10px 0px;
     border-bottom: 1px solid #B6C69E;
 }
 
-nav .nav-link{
+nav.desktop-nav .nav-link{
     color: #412C12!important;
     position: relative;
     padding: 0.5rem 1.5rem;
 }
 
-nav .nav-link::before{
+nav.desktop-nav .nav-link::before{
     content: "";
     background-image: url(../images/icons/navlink-ico-left.svg);
     background-position: center;
@@ -68,7 +68,7 @@ nav .nav-link::before{
     opacity: 0;
 }
 
-nav .nav-link::after{
+nav.desktop-nav .nav-link::after{
     content: "";
     background-image: url(../images/icons/navlink-ico-right.svg);
     background-position: center;
@@ -84,14 +84,14 @@ nav .nav-link::after{
     opacity: 0;
 }
 
-nav .nav-link:hover::before,
-nav .nav-link:hover::after,
-nav .active.nav-link::before,
-nav .active.nav-link::after{
+nav.desktop-nav .nav-link:hover::before,
+nav.desktop-nav .nav-link:hover::after,
+nav.desktop-nav .active.nav-link::before,
+nav.desktop-nav .active.nav-link::after{
     opacity: 1;
 }
 
-nav .sub-nav{
+nav.desktop-nav .sub-nav{
     border-bottom: 1px solid #B6C69E;
 }
 
@@ -134,6 +134,18 @@ nav .sub-nav{
         font-size: 14px;
     }
 
+    nav.desktop-nav .nav-link {
+        padding: 0.5rem 1rem;
+    }
+
+    nav.desktop-nav .nav-link::before {
+        left: -4px;
+    }
+
+    nav.desktop-nav .nav-link::after {
+        right: -4px;
+    }
+
 }
 
 @media screen and (max-width: 994px){
@@ -141,7 +153,9 @@ nav .sub-nav{
 }
 
 @media screen and (max-width: 768px){
-
+    nav.desktop-nav {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 640px){
