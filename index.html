@@ -47,8 +47,8 @@
 				<div class="sub-nav">
 					<div class="container-xl">
 						<div class="d-flex justify-content-evenly">
-							<a href="#" class="nav-link active">Our Flowers</a>
-							<a href="#" class="nav-link">Our Café</a>
+							<div id="ourFlowersBtn" class="nav-link">Our Flowers</div>
+							<div class="nav-link">Our Café</div>
 						</div>
 					</div>
 				</div>
@@ -125,7 +125,7 @@
 					</div>
 				</div>
 			</section>
-			<section class="third-block">
+			<section class="third-block" id="our-flowers">
 				<img src="images/icons/element-4.svg" class="thirdBlock-topRightELement">
 				<img src="images/icons/element-7.svg" class="thirdBlock-topCenterELement">
 				<div class="container-xl">
@@ -341,6 +341,19 @@
 		});
 		}
 
+		document.getElementById('ourFlowersBtn').addEventListener('click', function () {
+            const divContainer = document.getElementById('our-flowers');
+            const offset = 200;
+
+            if (divContainer) {
+                const targetScrollPosition = divContainer.getBoundingClientRect().top + window.scrollY - offset;
+
+                window.scrollTo({
+                    top: targetScrollPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
 
 	</script>
 </html>

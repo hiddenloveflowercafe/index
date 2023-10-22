@@ -70,6 +70,10 @@ nav .nav-link{
     color: #412C12!important;
     position: relative;
     padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    font-size: 14px;
+    color: #5E6848;
+    font-family: 'Quattrocento', serif;
 }
 
 nav.desktop-nav .nav-link::before{
