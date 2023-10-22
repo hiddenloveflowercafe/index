@@ -341,19 +341,48 @@
 		});
 		}
 
-		document.getElementById('ourFlowersBtn').addEventListener('click', function () {
-            const divContainer = document.getElementById('our-flowers');
-            const offset = 200;
+		// document.getElementById('ourFlowersBtn').addEventListener('click', function () {
+        //     const divContainer = document.getElementById('our-flowers');
+        //     const offset = 200;
 
-            if (divContainer) {
+        //     if (divContainer) {
+        //         const targetScrollPosition = divContainer.getBoundingClientRect().top + window.scrollY - offset;
+
+        //         window.scrollTo({
+        //             top: targetScrollPosition,
+        //             behavior: 'smooth'
+        //         });
+        //     }
+        // });
+
+		const scrollButton = document.getElementById('ourFlowersBtn');
+        const divContainer = document.getElementById('our-flowers');
+        const offset = 200;
+
+        function addActiveClass() {
+            const targetScrollPosition = divContainer.getBoundingClientRect().top + window.scrollY - offset;
+            if (window.scrollY >= targetScrollPosition && window.scrollY <= targetScrollPosition + divContainer.clientHeight) {
+                scrollButton.classList.add('active');
+            } else {
+                scrollButton.classList.remove('active');
+            }
+        }
+
+        if (scrollButton && divContainer) {
+            scrollButton.addEventListener('click', function () {
                 const targetScrollPosition = divContainer.getBoundingClientRect().top + window.scrollY - offset;
 
                 window.scrollTo({
                     top: targetScrollPosition,
                     behavior: 'smooth'
                 });
-            }
-        });
+
+                addActiveClass();
+				scrollButton.classList.add('active');
+            });
+
+            window.addEventListener('scroll', addActiveClass);
+        }
 
 	</script>
 </html>
