@@ -48,7 +48,7 @@
 					<div class="container-xl">
 						<div class="d-flex justify-content-evenly">
 							<div id="ourFlowersBtn" class="nav-link">Our Flowers</div>
-							<div class="nav-link">Our Café</div>
+							<div id="ourCafeBtn" class="nav-link">Our Café</div>
 						</div>
 					</div>
 				</div>
@@ -365,34 +365,45 @@
 		});
 		}
 
-		const scrollButton = document.getElementById('ourFlowersBtn');
-        const divContainer = document.getElementById('our-flowers');
-        const offset = 200;
+		const offset = 200;
 
-        function addActiveClass() {
-            const targetScrollPosition = divContainer.getBoundingClientRect().top + window.scrollY - offset;
-            if (window.scrollY >= targetScrollPosition && window.scrollY <= targetScrollPosition + divContainer.clientHeight) {
-                scrollButton.classList.add('active');
-            } else {
-                scrollButton.classList.remove('active');
-            }
-        }
+		function scrollToElement(element) {
+		const targetScrollPosition = element.getBoundingClientRect().top + window.scrollY - offset;
+		window.scrollTo({
+			top: targetScrollPosition,
+			behavior: 'smooth'
+		});
+		}
 
-        if (scrollButton && divContainer) {
-            scrollButton.addEventListener('click', function () {
-                const targetScrollPosition = divContainer.getBoundingClientRect().top + window.scrollY - offset;
+		function addActiveClass() {
+		const containers = [
+			{ button: 'ourFlowersBtn', container: 'our-flowers' },
+			{ button: 'ourCafeBtn', container: 'our-cafe' }
+		];
 
-                window.scrollTo({
-                    top: targetScrollPosition,
-                    behavior: 'smooth'
-                });
+		containers.forEach(({ button, container }) => {
+			const scrollBtn = document.getElementById(button);
+			const containerElement = document.getElementById(container);
 
-                addActiveClass();
-				scrollButton.classList.add('active');
-            });
+			if (scrollBtn && containerElement) {
+			const targetScrollPosition = containerElement.getBoundingClientRect().top + window.scrollY - offset;
+			const isActive = window.scrollY >= targetScrollPosition && window.scrollY <= targetScrollPosition + containerElement.clientHeight;
+			scrollBtn.classList.toggle('active', isActive);
+			}
+		});
+		}
 
-            window.addEventListener('scroll', addActiveClass);
-        }
+		document.addEventListener('click', (e) => {
+		const targetId = e.target.id;
+		if (targetId === 'ourFlowersBtn' || targetId === 'ourCafeBtn') {
+			const containerId = targetId === 'ourFlowersBtn' ? 'our-flowers' : 'our-cafe';
+			scrollToElement(document.getElementById(containerId));
+			addActiveClass();
+		}
+		});
+
+		window.addEventListener('scroll', addActiveClass);
+
 
 		$(document).ready(function(){
             $('.cafe-slider').owlCarousel({
