@@ -14,8 +14,8 @@
 	</style>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/general.css">
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 	<!-- <script src="https://unpkg.com/scrollreveal@4"></script>
 	<script src="https://smtpjs.com/v3/smtp.js"></script> -->
 	<title>Hidden Love Flowers & Crafts + Cafe</title>
@@ -244,14 +244,38 @@
 						</a>
 					</div>
 				</div>
-				
+			</section>
+			<section class="fourth-block" id="our-cafe">
+				<div class="container-xl">
+					<h2 class="block-title">Our Café</h2>
+					<p class="body-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+				</div>
+				<div class="slider-container">
+					<div class="cafe-slider owl-carousel">
+						<div class="item"><img src="images/slider/slider_img_1.png" alt="Image 1"></div>
+						<div class="item"><img src="images/slider/slider_img_2.png" alt="Image 2"></div>
+						<div class="item"><img src="images/slider/slider_img_3.png" alt="Image 3"></div>
+						<div class="item"><img src="images/slider/slider_img_4.png" alt="Image 4"></div>
+						<div class="item"><img src="images/slider/slider_img_5.png" alt="Image 5"></div>
+					</div>
+				</div>
+				<div class="container-xl">
+					<div class="menu-container">
+						<img src="images/icons/menu-title.svg" class="menu-title">
+						<div class="grid">
+							<img src="images/menu-1.png" class="menu-img">
+							<img src="images/menu-2.png" class="menu-img">
+						</div>
+					</div>
+					
+				</div>
 			</section>
 		</main>
 	</body>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-	<script src="js/navigation.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+	<!-- <script src="js/navigation.js"></script>
 	<script src="js/slider.js"></script>
 	<script src="js/fadeViewpoint.js"></script> -->
 	<script>
@@ -341,20 +365,6 @@
 		});
 		}
 
-		// document.getElementById('ourFlowersBtn').addEventListener('click', function () {
-        //     const divContainer = document.getElementById('our-flowers');
-        //     const offset = 200;
-
-        //     if (divContainer) {
-        //         const targetScrollPosition = divContainer.getBoundingClientRect().top + window.scrollY - offset;
-
-        //         window.scrollTo({
-        //             top: targetScrollPosition,
-        //             behavior: 'smooth'
-        //         });
-        //     }
-        // });
-
 		const scrollButton = document.getElementById('ourFlowersBtn');
         const divContainer = document.getElementById('our-flowers');
         const offset = 200;
@@ -383,6 +393,50 @@
 
             window.addEventListener('scroll', addActiveClass);
         }
+
+		$(document).ready(function(){
+            $('.cafe-slider').owlCarousel({
+                loop: true,
+                margin: -100,
+                nav: false,
+				dots: true,
+                items: 1,
+				mouseDrag: false,
+				touchDrag: false, 
+				// autoplay: true,
+                // autoplayTimeout: 5000,
+                // autoplaySpeed: 1000, 
+				responsive: {
+                    0: {
+                        margin: -20,
+                    },
+					300: {
+						margin: -25,
+                    },
+					400: {
+						margin: -30,
+                    },
+                    500: {
+						margin: -40,
+                    },
+					700: {
+						margin: -30,
+                    },
+					1050: {
+						margin: -50,
+                    },
+					1099: {
+						margin: -50,
+                    },
+					1100: {
+                        margin: -55,
+                    },
+                    1200: {
+                        margin: -75,
+                    }
+                }
+            });
+        });
 
 	</script>
 </html>
