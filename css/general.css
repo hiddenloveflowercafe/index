@@ -10,7 +10,7 @@ body, h1, p{
 a {
     text-decoration: none;
     outline: none;
-    font-size: 14px;
+    font-size: 1.1rem;
 }
 
 h1,h2 {
@@ -18,7 +18,7 @@ h1,h2 {
 }
 
 p,h3 {
-    font-family: 'Quattrocento', serif;
+    font-family: 'Annie Use Your Telescope', cursive;
 }
 
 h1,h2 {
@@ -26,11 +26,11 @@ h1,h2 {
 }
 
 p {
-    font-size: 18px;
+    font-size: 1.1rem;
 }
 
 .body-text-sm {
-    font-size: 14px;
+    font-size: 1.1rem;
 }
 
 main {
@@ -42,7 +42,7 @@ nav.desktop-nav {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 9999;
+    z-index: 100;
     width: 100%;
     background: #ffffff;
     box-shadow: 0px 0px 20px #7889587d;
@@ -52,7 +52,7 @@ nav .top-nav {
     background-color: #B6C69E;
     color: #ffffff;
     padding: 0.5rem;
-    font-family: 'Quattrocento', serif;
+    font-family: 'Annie Use Your Telescope', cursive;
     text-align: center;
     font-size: small;
 }
@@ -71,13 +71,12 @@ nav.desktop-nav .main-nav {
 }
 
 nav .nav-link{
-    color: #412C12!important;
     position: relative;
     padding: 0.5rem 1.5rem;
     cursor: pointer;
-    font-size: 14px;
-    color: #5E6848;
-    font-family: 'Quattrocento', serif;
+    font-size: 1.1rem;
+    color: #5e6848;
+    font-family: 'Annie Use Your Telescope', cursive;
 }
 
 nav.desktop-nav .nav-link::before{
@@ -131,9 +130,10 @@ nav.mobile-nav {
     display: block;
     padding: 0.5rem 1rem;
     background-color: #FF946D;
-    border-radius: 5px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     text-align: center;
-    font-family: 'Quattrocento', serif;
+    font-family: 'Annie Use Your Telescope', cursive;
     color: #ffffff;
     width: fit-content;
     transition: all 0.5s ease;
@@ -167,7 +167,7 @@ p.price{
     }
 
     a, .body-text {
-        font-size: 14px;
+        font-size: 1.1rem;
     }
 
     nav.desktop-nav .nav-link {
@@ -405,12 +405,14 @@ p.price{
 /* -----------------item card------------------ */
 .item-card {
     border: 2px solid #5E6848;
-    border-radius: 5px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     overflow: hidden;
-    padding: 0.5rem 0.5rem 4rem 0.5rem;
+    padding: 0.5rem 0.5rem 3.5rem 0.5rem;
     position: relative;
     background: white;
     transition: box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
 .item-card:hover {
@@ -419,7 +421,7 @@ p.price{
 
 .item-card .card-title {
     margin-top: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 600;
 }
 
@@ -428,21 +430,21 @@ p.price{
     width: 100%;
     object-fit: cover;
     object-position: top;
-    border-radius: 5px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
-.item-card p.body-text-sm {
+/* .item-card p.body-text-sm {
     font-style: italic;
-}
+} */
 
 .item-card p.price {
     position: absolute;
     bottom: 1rem;
     right: 1rem;
-    font-family: 'IM Fell French Canon SC', serif;
-    font-size: 1.5rem;
+    font-family: 'Princess Sofia', cursive;
+    font-size: 1.2rem;
     color: #DC8D53!important;
-    font-weight: 600;
 }
 
 @media screen and (max-width: 769px){
@@ -555,11 +557,12 @@ p.price{
 
 .bestsellers-slider .owl-nav button.owl-prev {
     left: -95px;
+    transform: rotate(90deg);
 }
 
 .bestsellers-slider .owl-nav button.owl-next {
     right: -95px;
-    transform: rotate(180deg);
+    transform: rotate(270deg);
 }
 
 @media screen and (max-width: 1200px){
@@ -672,8 +675,8 @@ img.thirdBlock-topCenterELement {
 
 .custom-select-container {
     margin-right: 1rem;
-    font-family: 'Quattrocento', serif;
-    font-size: 14px;
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: 1.1rem;
     color: #5E6848;
 }
 
@@ -688,10 +691,13 @@ img.thirdBlock-topCenterELement {
     width: 100%;
     padding: 7px;
     border: 1px solid #5E6848;
-    border-radius: 5px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     background-color: #fff;
     cursor: pointer;
     position: relative;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
 .selected-option::after {
@@ -706,6 +712,18 @@ img.thirdBlock-topCenterELement {
     width: 13px;
     height: 13px;
     transform: translate(0%, -50%);
+    z-index: 2;
+}
+
+.selected-option::before {
+    content: "";
+    position: absolute;
+    top: 0%;
+    right: 0;
+    width: 20px;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 1;
 }
   
   .options {
@@ -716,7 +734,8 @@ img.thirdBlock-topCenterELement {
     overflow-y: auto;
     background-color: #F3F7F1;
     border: 1px solid #5E6848;
-    border-radius: 5px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     top: 45px;
     z-index: 5;
   }
@@ -728,7 +747,7 @@ img.thirdBlock-topCenterELement {
   .option {
     padding: 0.5rem 1rem;
     cursor: pointer;
-    font-size: 14px; /* Adjust font size as needed */
+    font-size: 1.1rem; /* Adjust font size as needed */
     color: #5E6848; /* Adjust text color as needed */
   }
   
@@ -1008,7 +1027,8 @@ img.thirdBlock-topCenterELement {
 .fifth-block .testi-card {
     background: white;
     padding: 2.5rem 1.5rem 1.5rem 1.5rem;
-    border-radius: 5px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     box-shadow: 0px 0px 20px #78895845;
     position: relative;
     text-align: center;
@@ -1090,7 +1110,8 @@ img.thirdBlock-topCenterELement {
 .tiktok-con, .insta-con, .facebook-con{
     overflow: hidden;
     background: #ffffff;
-    border-radius: 5px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     border: 1rem solid #ffffff;
     width: 100%;
 }
